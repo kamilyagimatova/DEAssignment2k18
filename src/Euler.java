@@ -23,6 +23,9 @@ public class Euler {
         this.h = h;
     }
 
+    public Euler() {
+    }
+
     public double formula(double x, double y) {
         return y + h * function(x, y);
     }

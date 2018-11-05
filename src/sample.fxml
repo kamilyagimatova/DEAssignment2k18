@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="579.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="Controller">
+    <children>
+        <AnchorPane prefHeight="107.0" prefWidth="669.0">
+            <children>
+                <TextField layoutX="134.0" layoutY="35.0" fx:id="xMinField"/>
+                <Button layoutX="416.0" layoutY="36.0" mnemonicParsing="false" onAction="#xMinModify" text="Modify"
+                        fx:id="xMinButton"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="x min:"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="107.0" prefWidth="669.0">
+            <children>
+                <TextField layoutX="134.0" layoutY="35.0" fx:id="xMaxField"/>
+                <Button layoutX="416.0" layoutY="36.0" mnemonicParsing="false" onAction="#xMaxModify" text="Modify"
+                        fx:id="xMaxButton"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="59.0" text="x max:"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="107.0" prefWidth="669.0">
+            <children>
+                <TextField fx:id="yMinField" layoutX="134.0" layoutY="35.0"/>
+                <Button fx:id="yMinButton" layoutX="416.0" layoutY="36.0" mnemonicParsing="false" onAction="#yMinModify"
+                        text="Modify"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="y min:"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="107.0" prefWidth="669.0">
+            <children>
+                <TextField fx:id="hField" layoutX="134.0" layoutY="35.0"/>
+                <Button fx:id="hButton" layoutX="416.0" layoutY="36.0" mnemonicParsing="false" onAction="#hModify"
+                        text="Modify"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="h:"/>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
