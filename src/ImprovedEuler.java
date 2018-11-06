@@ -3,9 +3,6 @@ public class ImprovedEuler extends Euler {
         super(xMin, yMin, xMax, h);
     }
 
-    public ImprovedEuler() {
-        super();
-    }
 
     @Override
     public double formula(double x, double y) {

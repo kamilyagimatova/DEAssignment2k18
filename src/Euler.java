@@ -9,13 +9,17 @@ public class Euler {
     List<Point> points;
     List<Double> globalErrors;
     List<Double> localErrors;
+    List<Point> yExact;
 
     public Euler(double xMin, double yMin, double xMax, double h) {
-        if (xMin == 0 || xMax == 0) {
-            throw new IllegalArgumentException("x has to be non-zero");
+        if (xMin <= 0 && xMax >= 0) {
+            throw new IllegalArgumentException("Method doesn't work with x = 0");
         }
-        if (h == 0) {
-            throw new IllegalArgumentException("h has to be non-zero");
+        if (xMin >= xMax) {
+            throw new IllegalArgumentException("xMin must be less than xMax");
+        }
+        if (h <= 0) {
+            throw new IllegalArgumentException("h has to be non-positive");
         }
         this.xMin = xMin;
         this.xMax = xMax;
@@ -23,8 +27,6 @@ public class Euler {
         this.h = h;
     }
 
-    public Euler() {
-    }
 
     public double formula(double x, double y) {
         return y + h * function(x, y);
@@ -85,35 +87,62 @@ public class Euler {
         }
     }
 
+    public void countYExact() {
+        if (yExact != null) {
+            yExact = null;
+        }
+        yExact = new LinkedList<Point>();
+        ((LinkedList<Point>) yExact).addFirst(new Point(xMin, yMin));
+        double xCurrent = xMin;
+        double yCurrent = yMin;
+        while (xCurrent + h <= xMax) {
+            yCurrent = solutionFunction(xCurrent);
+            xCurrent += h;
+            yExact.add(new Point(xCurrent, yCurrent));
+        }
+    }
+
     public void answer() {
         countC();
         countPoints();
         countGlobalErrors();
         countLocalErrors();
-        int i = 0;
-        for (Point point : points) {
-            System.out.printf("x = %f; y = %f; e local = %f; e global = %f \n", point.x, point.y, localErrors.get(i), globalErrors.get(i));
-            i++;
-        }
+        countYExact();
+//        int i = 0;
+//        for (Point point : points) {
+//            System.out.printf("x = %f; y = %f; e local = %f; e global = %f; e exact = %f\n", point.x, point.y, localErrors.get(i), globalErrors.get(i), yExact.get(i).y);
+//            i++;
+//        }
     }
 
-    public void setXMin(double xMin) {
-        if (xMin == 0) {
-            throw new IllegalArgumentException("x has to be non-zero");
+//    public void setXMin(double xMin) {
+//        if (xMin == 0) {
+//            throw new IllegalArgumentException("x has to be non-zero");
+//        }
+//        if (xMin > this.xMax) {
+//            throw new IllegalArgumentException("xMin must be less or equal than xMax");
+//        }
+//        this.xMin = xMin;
+//    }
+//
+//    public void setXMax(double xMax) {
+//        if (xMax == 0) {
+//            throw new IllegalArgumentException("x has to be non-zero");
+//        }
+//        if (this.xMin > xMax) {
+//            throw new IllegalArgumentException("xMax must be greater or equal than xMin");
+//        }
+//        this.xMax = xMax;
+//    }
+
+    public void setXminAndXMax(double xMin, double xMax) {
+        if (xMin <= 0 && xMax >= 0) {
+            throw new IllegalArgumentException("Method doesn't work with x = 0");
         }
-        if (xMin > this.xMax) {
-            throw new IllegalArgumentException("xMin must be less or equal than xMax");
+        if (xMin >= xMax) {
+            throw new IllegalArgumentException("xMin must be less than xMax");
         }
         this.xMin = xMin;
-    }
-
-    public void setXMax(double xMax) {
-        if (xMax == 0) {
-            throw new IllegalArgumentException("x has to be non-zero");
-        }
-        if (this.xMin > xMax) {
-            throw new IllegalArgumentException("xMax must be greater or equal than xMin");
-        }
         this.xMax = xMax;
     }
 
@@ -122,8 +151,8 @@ public class Euler {
     }
 
     public void setH(double h) {
-        if (h == 0) {
-            throw new IllegalArgumentException("h has to be non-zero");
+        if (h <= 0) {
+            throw new IllegalArgumentException("h has to be positive");
         }
         this.h = h;
     }

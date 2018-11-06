@@ -3,10 +3,6 @@ public class RungeKutta extends Euler {
         super(xMin, yMin, xMax, h);
     }
 
-    public RungeKutta() {
-        super();
-    }
-
     @Override
     public double formula(double x, double y) {
         double k1 = function(x, y);
