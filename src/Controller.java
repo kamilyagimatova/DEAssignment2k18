@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 
 public class Controller {
 
@@ -57,7 +59,17 @@ public class Controller {
 
         exactPoints.setName("Exact solution");
 
-        for (Point point : euler.yExact) {
+        List<Point> yExact = euler.yExact;
+
+        if (euler.yExact == null) {
+            if (improvedEuler.yExact == null) {
+                yExact = rungeKutta.yExact;
+            } else {
+                yExact = improvedEuler.yExact;
+            }
+        }
+
+        for (Point point : yExact) {
             exactPoints.getData().add(new XYChart.Data<Number, Number>(point.x, point.y));
         }
         return exactPoints;
@@ -176,7 +188,7 @@ public class Controller {
         final NumberAxis xAxis = new NumberAxis(rungeKutta.xMin, rungeKutta.xMax, 1);
         final NumberAxis yAxis = new NumberAxis();
         final AreaChart<Number, Number> areaChart = new AreaChart<Number, Number>(xAxis, yAxis);
-        areaChart.setTitle("Runge-Kutta Euler");
+        areaChart.setTitle("Runge-Kutta");
 
         areaChart.setLegendSide(Side.LEFT);
 
@@ -188,7 +200,7 @@ public class Controller {
             rungeKuttaPoints.getData().add(new XYChart.Data<Number, Number>(point.x, point.y));
         }
 
-        graph.setTitle("Runge-Kutta Euler Method");
+        graph.setTitle("Runge-Kutta Method");
         Scene scene = new Scene(areaChart, 400, 300);
         areaChart.getData().addAll(rungeKuttaPoints, exactBuild());
         graph.setScene(scene);

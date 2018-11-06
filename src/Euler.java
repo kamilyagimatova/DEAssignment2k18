@@ -36,7 +36,7 @@ public class Euler {
         if (x != 0) {
             return 3 * x * Math.exp(x) - y * (1 - 1 / x);
         } else {
-            return 0; // resolve it
+            return 0;
         }
     }
 
@@ -70,7 +70,6 @@ public class Euler {
         localErrors = new LinkedList<>();
         localErrors.add((double) 0);
         for (int i = 1; i < points.size(); i++) {
-            // double error = solutionFunction(points.get(i).x) - solutionFunction(points.get(i - 1).x)  - h * function(points.get(i - 1).x, solutionFunction(points.get(i - 1).x));
             double error = solutionFunction(points.get(i).x) - formula(points.get(i - 1).x, solutionFunction(points.get(i - 1).x));
             localErrors.add(error);
         }
@@ -115,25 +114,6 @@ public class Euler {
 //        }
     }
 
-//    public void setXMin(double xMin) {
-//        if (xMin == 0) {
-//            throw new IllegalArgumentException("x has to be non-zero");
-//        }
-//        if (xMin > this.xMax) {
-//            throw new IllegalArgumentException("xMin must be less or equal than xMax");
-//        }
-//        this.xMin = xMin;
-//    }
-//
-//    public void setXMax(double xMax) {
-//        if (xMax == 0) {
-//            throw new IllegalArgumentException("x has to be non-zero");
-//        }
-//        if (this.xMin > xMax) {
-//            throw new IllegalArgumentException("xMax must be greater or equal than xMin");
-//        }
-//        this.xMax = xMax;
-//    }
 
     public void setXminAndXMax(double xMin, double xMax) {
         if (xMin <= 0 && xMax >= 0) {
