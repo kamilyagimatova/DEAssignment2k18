@@ -9,19 +9,19 @@
         <AnchorPane prefHeight="107.0" prefWidth="669.0">
             <children>
                 <TextField layoutX="134.0" layoutY="35.0" fx:id="xMinField"/>
-                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="x min:"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="x0:"/>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="107.0" prefWidth="669.0">
             <children>
                 <TextField layoutX="134.0" layoutY="35.0" fx:id="xMaxField"/>
-                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="59.0" text="x max:"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="59.0" text="X:"/>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="107.0" prefWidth="345.0">
             <children>
                 <TextField fx:id="yMinField" layoutX="134.0" layoutY="35.0"/>
-                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="y min:"/>
+                <Label layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="50.0" text="y0:"/>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="107.0" prefWidth="669.0">
